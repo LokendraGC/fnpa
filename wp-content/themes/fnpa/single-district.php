@@ -43,7 +43,7 @@ get_header();
                     <?php 
                     $unique_ID = get_the_ID();
                     $args = array(
-                        'post_type' => 'post',
+                        'post_type' => 'district',
                         'post_status' => 'publish',
                         'post_per_page' => -1,
                         'post__not_in' => array( $unique_ID )

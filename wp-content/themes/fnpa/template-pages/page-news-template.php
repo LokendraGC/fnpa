@@ -23,11 +23,10 @@ get_header();
 	</section>
 	<!-- blog section-1 end -->
 
-	<!-- News start-->
 	<section class="container-fluid position-relative section-padding bg-white">
 		<div class="container">
 			<div class="row mb-5">
-				<div class="col-lg-4 col-12 d-flex justify-content-center pb-lg-0 mt-8 mt-lg-0 mb-5">
+				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
 					<div class="position-relative z-2 w-400">
 						<div class="zoom-img blog-img">
 							<a href="blog-detail.html"><img src="https://fnpa.org.np/wp-content/uploads/2024/02/mudrana.jpg" alt="fnpa" /></a>
@@ -45,7 +44,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-12 d-flex justify-content-center pb-lg-0 mt-8 mt-lg-0 mb-5">
+				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
 					<div class="position-relative z-2 w-400">
 						<div class="zoom-img blog-img">
 							<a href="blog-detail.html"><img src="https://fnpa.org.np/wp-content/uploads/2021/08/236950852_260315952595414_8904945851587501239_n.jpg" alt="fnpa" /></a>
@@ -63,7 +62,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-12 d-flex justify-content-center pb-lg-0 mt-8 mt-lg-0 mb-5">
+				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
 					<div class="position-relative z-2 w-400">
 						<div class="zoom-img blog-img">
 							<a href="blog-detail.html"><img src="https://fnpa.org.np/wp-content/uploads/2021/12/sc-of-nepal.jpg" alt="fnpa" /></a>
@@ -81,7 +80,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-12 d-flex justify-content-center pb-lg-0 mt-8 mt-lg-0 mb-5">
+				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
 					<div class="position-relative z-2 w-400">
 						<div class="zoom-img blog-img">
 							<a href="blog-detail.html"><img src="https://fnpa.org.np/wp-content/uploads/2024/02/mudrana.jpg" alt="fnpa" /></a>
@@ -99,7 +98,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-12 d-flex justify-content-center pb-lg-0 mt-8 mt-lg-0 mb-5">
+				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
 					<div class="position-relative z-2 w-400">
 						<div class="zoom-img blog-img">
 							<a href="blog-detail.html"><img src="https://fnpa.org.np/wp-content/uploads/2021/08/236950852_260315952595414_8904945851587501239_n.jpg" alt="fnpa" /></a>
@@ -117,7 +116,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-12 d-flex justify-content-center pb-lg-0 mt-8 mt-lg-0 mb-5">
+				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
 					<div class="position-relative z-2 w-400">
 						<div class="zoom-img blog-img">
 							<a href="blog-detail.html"><img src="https://fnpa.org.np/wp-content/uploads/2021/12/sc-of-nepal.jpg" alt="fnpa" /></a>

@@ -61,7 +61,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light w-100 z-4 tcmenu__wrap">
             <div class="container px-3">
-                <a class="navbar-brand" href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="fnpa"></a>
+                <a class="navbar-brand" href="<?php echo site_url(''); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="fnpa"></a>
                 <div class="mobile-nav-toggler d-block d-lg-none btn btn-primary btn-navbar rounded-circle px-2 ms-4 d-flex align-items-center justify-content-center">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_19_537)">
