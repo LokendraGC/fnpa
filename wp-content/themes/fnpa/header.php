@@ -21,39 +21,51 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-   <!--top-bar-->
+    <?php wp_body_open(); ?>
+    <!--top-bar-->
     <div class="top-bar position-relative z-4 d-none d-lg-block">
         <div class="container-fluid">
             <div class="container py-2">
                 <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-                    <div class="d-flex mb-lg-0 mb-3 flex-wrap align-items-center justify-content-center justify-content-lg-start gap-4 font-cutsom">
-                        <div class="follow-us me-2 border-start ps-4">Follow Us:</div>
-                        <a href="https://www.facebook.com/" class=" text-reset">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="https://twitter.com/" class=" text-reset">
-                            <i class="bi bi-twitter-x"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" class=" text-reset">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                        <a href="https://www.youtube.com/" class=" text-reset">
-                            <i class="bi bi-youtube"></i>
-                        </a>
-                    </div>
+
+                    <?php if( have_rows('wtn_social_media','options') ): ?>
+
+                        <div class="d-flex mb-lg-0 mb-3 flex-wrap align-items-center justify-content-center justify-content-lg-start gap-4 font-cutsom">
+                            <div class="follow-us me-2 border-start ps-4">Follow Us:</div>
+                            <?php while( have_rows('wtn_social_media','options') ):the_row();
+
+                                $media_icon = get_sub_field('wtn_media','options');
+                                $media_link = get_sub_field('wtn_link','options');
+                                if( $media_link ){
+                                    $url = $media_link;
+                                    $target = '_blank';
+                                }else{
+                                    $url = '#';
+                                    $target = '_self';
+                                }
+                                ?>
+                                <a href="<?php echo $url; ?>" target="<?php echo $target; ?>"><i class="bi <?php echo $media_icon; ?>"></i></a>
+                            <?php endwhile; ?>
+
+                        </div>
+                    <?php endif; ?>
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-end gap-2">
-                        <a href="mailto:info@fnpa.org.np" class="ps-4 phone-call text-primary">
-                            <i class="fa fa-envelope"></i>
-                            <span class="text-black ps-2">info@fnpa.org.np</span>
-                        </a>
-                        <a href="tel:977 1 5910977" class="ps-4 phone-call text-primary">
-                            <i class="fa fa-phone"></i>
-                            <span class="text-black ps-2">977 1 5910977</span>
-                        </a>
+                        <?php if( $mail_id = get_field('wtn_email_address_first') ): ?>
+                            <a href="mailto:<?php echo $mail_id; ?>" class="ps-4 phone-call text-primary">
+                                <i class="fa fa-envelope"></i>
+                                <span class="text-black ps-2"><?php echo $mail_id; ?></span>
+                            </a>
+                        <?php endif; ?>
+
+                        <?php if( $phone_no = get_field('wtn_phone_number_first') ): ?>
+                            <a href="tel:<?php echo $phone_no; ?>" class="ps-4 phone-call text-primary">
+                                <i class="fa fa-phone"></i>
+                                <span class="text-black ps-2"><?php echo $phone_no; ?></span>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </div>
@@ -61,7 +73,20 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light w-100 z-4 tcmenu__wrap">
             <div class="container px-3">
-                <a class="navbar-brand" href="<?php echo site_url(''); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="fnpa"></a>
+                <?php 
+
+                $logo = get_field('wtn_header_logo','options');
+
+                if( $logo ){
+                    $fnpa_logo = $logo['url'];
+                }else{
+                    $fnpa_logo = get_template_directory_uri() ."/assets/images/logo/logo.svg";
+                }
+
+                if( $fnpa_logo ):
+                    ?>
+                    <a class="navbar-brand" href="<?php echo site_url(''); ?>"><img src="<?php echo $fnpa_logo; ?>" alt="<?php echo get_bloginfo(); ?>"></a>
+                <?php endif; ?>
                 <div class="mobile-nav-toggler d-block d-lg-none btn btn-primary btn-navbar rounded-circle px-2 ms-4 d-flex align-items-center justify-content-center">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_19_537)">
@@ -86,6 +111,7 @@
                     <div class="offcanvas-header">
                         <a href="index.html" class="text-inverse"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="fnpa"></a>
                     </div>
+                    <!-- Web Menu -->
                     <div class="offcanvas-body pt-0 align-items-center justify-content-between">
                         <div class="tcmenu__navbar-wrap tcmenu__main-menu d-none d-md-none d-lg-flex">
                             <ul class="navbar-nav gap-4 me-auto align-items-lg-center navigation">
@@ -168,9 +194,22 @@
         <div class="tcmobile__menu">
             <nav class="tcmobile__menu-box">
                 <div class="close-btn"><i class="fas fa-times"></i></div>
-                <div class="nav-logo">
-                    <a class="mobi-logo" href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="fnpa"></a>
-                </div>
+                <?php 
+
+                $logo = get_field('wtn_header_logo','options');
+
+                if( $logo ){
+                    $fnpa_logo = $logo['url'];
+                }else{
+                    $fnpa_logo = get_template_directory_uri() ."/assets/images/logo/logo.svg";
+                }
+
+                if( $fnpa_logo ):
+                    ?>
+                    <div class="nav-logo">
+                        <a class="mobi-logo" href="<?php echo site_url(''); ?>"><img src="<?php echo $fnpa_logo; ?>" alt="<?php echo get_bloginfo(); ?>"></a>
+                    </div>
+                <?php endif; ?>
                 <div class="tcmobile__search">
                     <form action="#">
                         <input type="text" class="form-control shadow-none" placeholder="Search here...">
@@ -182,34 +221,40 @@
                 <div class="tcmobile__menu-bottom">
                     <div class="contact-info">
                         <ul class="list-wrap list-unstyled">
-                            <li><a href="mailto:info@fnpajsc.com">contact@fnpajsc.com</a></li>
-                            <li><a href="tel:0123456789">(229) 555-0109</a></li>
+                            <?php if( $mail = get_field('wtn_email_address_first','options') ): ?>
+                                <li><a href="mailto:<?php echo $mail; ?>"><?php echo $mail; ?></a></li>
+                            <?php endif; ?>
+                            <?php if( $phone = get_field('wtn_phone_number_first','options') ): ?>
+                                <li><a href="tel:<?php echo $phone; ?>"><?php echo $phone; ?></a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
-                    <div class="social-links">
-                        <ul class="list-wrap">
-                            <li> 
-                                <a href="https://www.facebook.com/" class=" text-reset">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" class=" text-reset">
-                                    <i class="bi bi-twitter-x"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" class=" text-reset">
-                                    <i class="bi bi-instagram"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com/" class=" text-reset">
-                                    <i class="bi bi-youtube"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
+                    <?php if( have_rows('wtn_social_media','options') ): ?>
+                        <div class="social-links">
+                            <ul class="list-wrap">
+                                <?php while( have_rows('wtn_social_media','options') ):the_row();
+
+                                    $media_icon = get_sub_field('wtn_media','options');
+                                    $media_link = get_sub_field('wtn_link','options');
+                                    if( $media_link ){
+                                        $url = $media_link;
+                                        $target = '_blank';
+                                    }else{
+                                        $url = '#';
+                                        $target = '_self';
+                                    }
+                                    ?>
+                                    <li> 
+                                        <a href="<?php echo $url; ?>" target="<?php echo $target; ?>" class=" text-reset">
+                                            <i class="bi <?php echo $media_icon; ?>"></i>
+                                        </a>
+                                    </li>
+                                <?php endwhile; ?>
+
+                            </ul>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </nav>
         </div>
@@ -221,88 +266,118 @@
                 <button  class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div class="offCanvas__logo mb-5">
-                    <a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/logo.svg" alt="Logo"></a>
-                </div>
+                <?php 
+                $logo = get_field('wtn_header_logo','options');
+
+                if( $logo ){
+                    $fnpa_logo = $logo['url'];
+                }else{
+                    $fnpa_logo = get_template_directory_uri() ."/assets/images/logo/logo.svg";
+                }
+
+                if( $fnpa_logo ):
+                    ?>
+                    <div class="offCanvas__logo mb-5">
+                        <a href="<?php echo site_url(''); ?>"><img src="<?php echo $fnpa_logo; ?>" alt="<?php echo get_bloginfo(); ?>"></a>
+                    </div>
+                <?php endif; ?>
                 <div class="offCanvas__side-info mb-4">
-                    <div class="contact-list mb-5">
-                        <h4>Office Address</h4>
-                        <p>123/A, Miranda City Likaoli <br> Prikano, Dope</p>
-                    </div>
-                    <hr class="mb-5">
-                    <div class="contact-list mb-5">
-                        <h4>Phone Number</h4>
-                        <p>+0989 7876 9865 9</p>
-                        <p>+(090) 8765 86543 85</p>
-                    </div>
-                    <hr class="mb-5">
-                    <div class="contact-list mb-5">
+
+                    <?php if( $address = get_field('wtn_address','options') ): ?>
+                        <div class="contact-list mb-5">
+                            <h4>Office Address</h4>
+                            <p><?php echo $address; ?></p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php
+                    $first_ph = get_field('wtn_phone_number_first','options');
+                    $second_ph = get_field('wtn_phone_number_second','options');
+                    if( $first_ph || $second_ph ):
+                        ?>
+                        <hr class="mb-5">
+                        <div class="contact-list mb-5">
+                            <h4>Phone Number</h4>
+                            <p><?php echo $first_ph; ?></p>
+                            <p><?php echo $second_ph; ?></p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php 
+                    $first_email = get_field('wtn_email_address_first','options');
+                    $sec_email = get_field('wtn_email_address_second','options');
+                    if($first_email || $sec_email ):
+                       ?>
+                       <hr class="mb-5">
+                       <div class="contact-list mb-5">
                         <h4>Email Address</h4>
-                        <p>info@example.com</p>
-                        <p>example.mail@hum.com</p>
+                        <p><?php echo $first_email; ?></p>
+                        <p><?php echo $sec_email; ?></p>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
-        <!-- Offcanvas menu -->
-        <!-- Offcanvas search -->
-        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop">
-            <div class="offcanvas-header">
-                <button  class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-8 col-lg-12">
-                            <h3 class="mb-4">What are you looking for?</h3>
-                            <div class="input-group mb-3" data-aos="zoom-in">
-                                <input type="text" class="form-control" placeholder="Enter Your Keywords" aria-label="Enter Your Keywords" aria-describedby="button-addon2">
-                                <button class="btn-primary"  id="button-addon2"><i class="bi bi-search"></i></button>
-                            </div>
+    </div>
+    <!-- Offcanvas menu -->
+    <!-- Offcanvas search -->
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop">
+        <div class="offcanvas-header">
+            <button  class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 col-lg-12">
+                        <h3 class="mb-4">What are you looking for?</h3>
+                        <div class="input-group mb-3" data-aos="zoom-in">
+                            <input type="text" class="form-control" placeholder="Enter Your Keywords" aria-label="Enter Your Keywords" aria-describedby="button-addon2">
+                            <button class="btn-primary"  id="button-addon2"><i class="bi bi-search"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Offcanvas search -->
-    </header>
-
-
-       <div class="tcmenu__navbar-wrap tcmenu__main-menu d-block d-md-block d-lg-none">
-        <div class="container">
-            <ul class="mobile-men">
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="index.html">Home</a>
-                </li>
-                <li class="nav-item dropdown menu-item-has-children">
-                    <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="about.html">Background</a></li>
-                        <li><a class="dropdown-item" href="about.html">Objectives</a></li>
-                        <li><a class="dropdown-item" href="message.html">Message of the president</a></li>
-                        <li><a class="dropdown-item" href="committee.html">Central Committee 2024-2026</a></li>
-                        <li><a class="dropdown-item" href="committee.html">Central Committee 2078</a></li>
-                        <li><a class="dropdown-item" href="committee.html">Secretariat 2022</a></li>
-                        <li><a class="dropdown-item" href="committee.html">Central Comittee 2075</a></li>
-                        <li><a class="dropdown-item" href="committee.html">Advisory Member</a></li>
-                        <li><a class="dropdown-item" href="committee.html">Past President</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown menu-item-has-children">
-                    <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resource</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="blog.html">News</a></li>
-                        <li><a class="dropdown-item" href="events.html">Events & Activities</a></li>
-                        <li><a class="dropdown-item" href="notice.html">Notice</a></li>
-                        <li><a class="dropdown-item" href="downloads.html">Download</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="gallery.html">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="contact.html">Contact</a>
-                </li>
-            </ul>  
-        </div>
     </div>
+    <!-- Offcanvas search -->
+</header>
+
+
+<!-- Mobile Menu -->
+<div class="tcmenu__navbar-wrap tcmenu__main-menu d-block d-md-block d-lg-none">
+    <div class="container">
+        <ul class="mobile-men">
+            <li class="nav-item">
+                <a class="nav-link fw-medium" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown menu-item-has-children">
+                <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="about.html">Background</a></li>
+                    <li><a class="dropdown-item" href="about.html">Objectives</a></li>
+                    <li><a class="dropdown-item" href="message.html">Message of the president</a></li>
+                    <li><a class="dropdown-item" href="committee.html">Central Committee 2024-2026</a></li>
+                    <li><a class="dropdown-item" href="committee.html">Central Committee 2078</a></li>
+                    <li><a class="dropdown-item" href="committee.html">Secretariat 2022</a></li>
+                    <li><a class="dropdown-item" href="committee.html">Central Comittee 2075</a></li>
+                    <li><a class="dropdown-item" href="committee.html">Advisory Member</a></li>
+                    <li><a class="dropdown-item" href="committee.html">Past President</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown menu-item-has-children">
+                <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resource</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="blog.html">News</a></li>
+                    <li><a class="dropdown-item" href="events.html">Events & Activities</a></li>
+                    <li><a class="dropdown-item" href="notice.html">Notice</a></li>
+                    <li><a class="dropdown-item" href="downloads.html">Download</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-medium" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-medium" href="contact.html">Contact</a>
+            </li>
+        </ul>  
+    </div>
+</div>
