@@ -323,7 +323,7 @@ if( $post_args ):
     <div class="swiper-wrapper">
        <?php
        $count = 1;
-       foreach( $district_args as $post ):
+       foreach( $post_args as $post ):
          setup_postdata( $post ); 
          ?>
          <div class="swiper-slide <?php echo $count == 3 ? '': 'd-flex justify-content-center pb-lg-0 mt-3 mt-lg-0 mb-5 mb-lg-0'; ?>">

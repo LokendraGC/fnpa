@@ -54,7 +54,7 @@ get_header();
                         ?>
                         <div class="col-lg-4">
                             <div>
-                                <h3 class="fs-1">Recent Posts</h3>
+                                <h3 class="fs-1">Recent Notices</h3>
                                 <?php
                                 foreach( $notice_args as $post ):
                                     setup_postdata($post);

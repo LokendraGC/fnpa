@@ -1,6 +1,6 @@
 <?php 
 get_header();
-/* Template Name: Notice */
+/* Template Name: Districts */
 ?>
 
 <main>  
@@ -26,26 +26,30 @@ get_header();
     <!-- notice start -->
         <?php 
     $args = array(
-        'post_type' => 'post',
+        'post_type' => 'district',
         'post_status' => 'publish',
         'post_per_page' => -1,
     );
 
-    $post_args = get_posts( $args );
-    if( $post_args ):
+    $district_args = get_posts( $args );
+    if( $district_args ):
         
      ?>
     <section class="blog section-2 bg-white section-padding bg-white">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                  <?php
-       foreach( $post_args as $post ):
+       foreach( $district_args as $post ):
          setup_postdata( $post ); 
          ?>
                 <div class="col-lg-6 col-md-6 col-12 d-flex wow img-custom-anim-top">
                     <div class="d-flex mt-4 border-bottom img-style custom-padding">
-                       
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/notification.svg" alt="<?php echo $post->post_title; ?>" class="align-self-start">
+                       <?php 
+                        $post_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+                        if($post_img ):
+                            ?>
+                        <img src="<?php echo $post_img[0]; ?>" alt="<?php echo $post->post_title; ?>" class="align-self-start">
+                    <?php endif; ?>
                         <div class="px-4 notice-style">
                             <a href="<?php echo get_permalink( $post->ID ); ?>" class="fs-2 text-dark fw-bold"><?php echo $post->post_title; ?></a>
                             <p><?php echo get_the_date('F j Y'); ?></p>
