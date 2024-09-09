@@ -1,6 +1,6 @@
 <?php 
 get_header();
-/* Template Name: News */
+/* Template Name: Publications */
 ?>
 
 <main>  
@@ -9,20 +9,20 @@ get_header();
 
 	<?php 
 	$args = array(
-		'post_type' => 'post',
+		'post_type' => 'publication',
 		'post_status' => 'publish',
 		'post_per_page' => -1,
 	);
 
-	$post_args = get_posts( $args );
-	if( $post_args ):
+	$publication_args = get_posts( $args );
+	if( $publication_args ):
 		
 	 ?>
 	<section class="container-fluid position-relative section-padding bg-white">
 		<div class="container">
 			<div class="row mb-5">
 				 <?php
-       foreach( $post_args as $post ):
+       foreach( $publication_args as $post ):
          setup_postdata( $post ); 
          ?>
 				<div class="col-lg-4 col-12 d-flex justify-content-center pb-10 mt-8 mt-lg-0 mb-5">
@@ -54,9 +54,7 @@ get_header();
 			 wp_reset_postdata();
 			 ?>
 			</div>
-			<div class="mx-auto">
-				<a href="#" class="btn-gradient mx-auto">View All<i class="bi bi-arrow-right ms-2"></i></a>
-			</div>
+		
 		</div>
 		
 	</section>

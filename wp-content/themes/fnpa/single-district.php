@@ -13,21 +13,8 @@ get_header();
 <main>  
 
     <!-- blog section-1 start -->
-    <section class="blog-section-1 wow img-custom-anim-top section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 brd-style">
-                    <div class="col-12 text-center breadcrumb">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="actives">Blog</li>
-                        </ul>
-                    </div>
-                    <h1>Weathering Financial Storms: Resilience in Uncertain Times</h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php get_template_part('template-parts/common/banner-section'); 
+    ?>
     <!-- blog section-1 end -->
 
     <!-- blog-details section-1 start -->

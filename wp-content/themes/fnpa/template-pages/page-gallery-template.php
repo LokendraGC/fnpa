@@ -6,23 +6,7 @@ get_header();
 
 <main>  
 
-	<!-- blog section-1 start -->
-	<section class="blog-section-1 wow img-custom-anim-top section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 brd-style">
-					<div class="col-12 text-center breadcrumb">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li class="actives">Gallery</li>
-						</ul>
-					</div>
-					<h1>Gallery</h1>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- blog section-1 end -->
+ <?php get_template_part('template-parts/common/banner-section');  ?>
 
 	<!-- Gallery Section Start -->
 	<section class="row_am gallery_section section-padding bg-white">

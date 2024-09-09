@@ -1062,7 +1062,7 @@ strong {
 }
 
 .blog-section-1 {
-  background-image: url("../images/page-blog/section-1/bg-img.png");
+/*  background-image: url("../images/page-blog/section-1/bg-img.png");*/
   background-size: cover;
   align-items: center;
   width: 100%;

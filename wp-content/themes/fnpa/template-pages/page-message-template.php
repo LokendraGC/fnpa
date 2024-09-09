@@ -3,24 +3,9 @@ get_header();
 /* Template Name: Message From Head */
 ?>
 
-<main>  
-	<!-- blog section-1 start -->
-	<section class="blog-section-1 wow img-custom-anim-top section-padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-12 brd-style">
-					<div class="col-12 text-center breadcrumb">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li class="actives">Message Of The President</li>
-						</ul>
-					</div>
-					<h1>Message Of The President</h1>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- blog section-1 end -->
+<main> 
+ 
+ <?php get_template_part('template-parts/common/banner-section'); ?>
 
 	<!--About start-->
 	<section class="section-padding overflow-hidden bg-white">
