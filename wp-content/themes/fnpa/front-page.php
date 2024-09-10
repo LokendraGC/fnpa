@@ -62,7 +62,7 @@
                 <div class="pe-lg-5 me-lg-5">
                    <?php echo $about_content; ?>
                    <div class="d-flex align-items-center gap-5" id="read-more-container" style="display: none;">
-                      <a href="about.html" class="btn-gradient fs-5 mt-2" target="_Self">Read More<i class="bi bi-arrow-right ms-2"></i></a>
+                      <a href="<?php echo get_permalink(12); ?>" class="btn-gradient fs-5 mt-2" target="_Self">Read More<i class="bi bi-arrow-right ms-2"></i></a>
                       <?php if( has_post_thumbnail() ): ?>
                           <img class="d-md-none d-none d-lg-block" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php echo get_bloginfo(); ?>">
                       <?php endif; ?>

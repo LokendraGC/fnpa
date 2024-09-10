@@ -36,3 +36,11 @@ unset( $file );
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+
+add_filter('wpcf7_form_elements', function($content) {
+    $content = str_replace('cols="40"', '', $content);
+    $content = str_replace('rows="10"', '', $content);
+    return $content;
+});

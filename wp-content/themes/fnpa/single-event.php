@@ -28,7 +28,7 @@ get_header();
                 <?php 
                 $unique_ID = get_the_ID();
                 $args = array(
-                    'post_type' => 'publication',
+                    'post_type' => 'event',
                     'post_status' => 'publish',
                     'post_per_page' => -1,
                     'post__not_in' => array( $unique_ID )
@@ -39,7 +39,7 @@ get_header();
                     ?>
                     <div class="col-lg-4">
                         <div>
-                            <h3 class="fs-1">Other Publication</h3>
+                            <h3 class="fs-1">Other Events</h3>
                             <?php
                             foreach( $notice_args as $post ):
                                 setup_postdata($post);
