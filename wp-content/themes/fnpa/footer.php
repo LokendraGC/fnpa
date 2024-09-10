@@ -32,30 +32,26 @@
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
-			<div class="col-lg-3 hide-on-mobile">
-				<div class="row">
-					<div class="col d-flex flex-column align-items-start">
-						<h5>Membership</h5>
-						<a href="about.html" class="text-reset mb-3">About</a>
-						<a href="notice.html" class="text-reset mb-3">Notice</a>
-						<a href="blog.html" class="text-reset mb-3">Blog</a>
-						<a href="contact.html" class="text-reset mb-3">Contact</a>
-						<a href="gallery.html" class="text-reset mb-3">Gallery</a>
-					</div>
+			
+
+				<div class="col-lg-3 hide-on-mobile">
+					<div class="row">
+			<?php if(is_active_sidebar('footer-menu-first')): ?>
+					<?php dynamic_sidebar('footer-menu-first'); ?>
+			<?php endif; ?>
 				</div>
 			</div>
-			<div class="col-lg-3 hide-on-mobile">
-				<div class="row">
-					<h5>Quick Links</h5>
-					<div class="col d-flex flex-column align-items-start">
-						<a href="events.html" class="text-reset mb-3">Events & Activities</a>
-						<a href="committee.html" class="text-reset mb-3">Members</a>
-						<a href="message.html" class="text-reset mb-3">Message of President</a>
-						<a href="downloads.html" class="text-reset mb-3">Downloads</a>
-						<a href="committee.html" class="text-reset mb-3">Committee</a>
-					</div>
+
+
+			<?php if(is_active_sidebar('footer-menu-second')): ?>
+				<div class="col-lg-3 hide-on-mobile">
+					<div class="row">
+					<?php dynamic_sidebar('footer-menu-second'); ?>
 				</div>
 			</div>
+			<?php endif; ?>
+
+
 			<div class="col-lg-3">
 				<div class="row">
 					<h5>Get in Touch</h5>
@@ -129,6 +125,59 @@
 		<path d="M8 1H32C35.866 1 39 4.13401 39 8V32C39 35.866 35.866 39 32 39H8C4.13401 39 1 35.866 1 32V8C1 4.13401 4.13401 1 8 1Z" />
 	</svg>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		const menuLinks = document.querySelectorAll('#menu-footer-menu-first a');
+		menuLinks.forEach(link => {
+			link.classList.add('text-reset', 'mb-3','d-block');
+		});
+
+		const menuLinks_sec = document.querySelectorAll('#menu-footer-menu-second a');
+		menuLinks_sec.forEach(link => {
+			link.classList.add('text-reset', 'mb-3','d-block');
+		});
+
+	});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menu = document.querySelectorAll('#menu-footer-menu-first a');
+    const parent = document.getElementById('menu-footer-menu-first');
+    
+    // Create a new div to replace the ul
+    const newContainer = document.createElement('div');
+
+    // Append only the anchor tags to the new container
+    menu.forEach(link => {
+        newContainer.appendChild(link);
+    });
+
+    // Replace the ul with the new div
+    parent.replaceWith(newContainer);
+
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuContainer = document.querySelector('.menu-footer-menu-second-container'); // Select the container
+    const links = menuContainer.querySelectorAll('a'); // Select all the <a> tags inside the container
+    
+    // Create a new div to hold the links
+    const newContainer = document.createElement('div');
+    newContainer.classList.add('col', 'd-flex', 'flex-column', 'align-items-start');
+    
+    // Loop through all the <a> tags and append them to the new container
+    links.forEach(link => {
+        newContainer.appendChild(link);
+    });
+
+    // Replace the old menu container with the new container
+    menuContainer.replaceWith(newContainer);
+});
+
+
+
+</script>
+
 
 <?php wp_footer(); ?>
 

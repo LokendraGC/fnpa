@@ -288,7 +288,7 @@ if( $district_args ):
         </div>
     </div>
     <div class="mx-auto mt-8">
-     <a href="#" class="btn-gradient mx-auto">View All<i class="bi bi-arrow-right ms-2"></i></a>
+     <a href="<?php echo get_permalink(200); ?>" class="btn-gradient mx-auto">View All<i class="bi bi-arrow-right ms-2"></i></a>
  </div>
 </div>
 

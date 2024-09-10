@@ -1,6 +1,5 @@
 <?php 
-
-class Homotel_Walker_Nav_Menu extends Walker {
+class FNPA_Walker_Nav_Menu extends Walker {
 	/**
 	 * What the class handles.
 	 *

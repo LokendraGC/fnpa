@@ -115,6 +115,7 @@
                     <div class="offcanvas-body pt-0 align-items-center justify-content-between">
                         <div class="tcmenu__navbar-wrap tcmenu__main-menu d-none d-md-none d-lg-flex">
                             <ul class="navbar-nav gap-4 me-auto align-items-lg-center navigation">
+                                
                                 <li class="nav-item">
                                     <a class="nav-link fw-medium" href="index.html">Home</a>
                                 </li>
