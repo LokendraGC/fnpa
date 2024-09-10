@@ -38,9 +38,17 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
-
+// Removing cols and rows from text area
 add_filter('wpcf7_form_elements', function($content) {
     $content = str_replace('cols="40"', '', $content);
     $content = str_replace('rows="10"', '', $content);
     return $content;
 });
+
+// adding class in input 
+add_filter('wpcf7_form_elements', function($content) {
+    // Add the custom class to the checkbox input
+    $content = str_replace('<input type="checkbox" name="privacy_check[]"', '<input type="checkbox" name="privacy_check[]" class="form-check-input"', $content);
+    return $content;
+});
+
