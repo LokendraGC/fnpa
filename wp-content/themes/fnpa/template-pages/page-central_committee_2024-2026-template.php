@@ -5,106 +5,52 @@ get_header();
 
 <main>  
 
-    <!-- blog section-1 start -->
-    <section class="blog-section-1 wow img-custom-anim-top section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 brd-style">
-                    <div class="col-12 text-center breadcrumb">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="actives">Central Committee</li>
-                        </ul>
-                    </div>
-                    <h1 class="ds-2">Central Committee</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- blog section-1 end -->
+<?php get_template_part('template-parts/common/banner-section'); ?>
+     
 
     <!-- Team section-3 start -->
+        <!-- blog section-2 start -->
+<?php 
+
+var_dump('expression');
+
+$term = get_queried_object();
+var_dump($term->slug . 'dfd');
+
+
+$terms = get_the_terms(get_the_ID(), 'taxonomy-member');
+
+if( $terms ):
+
+var_dump('expression');
+?>
+
     <section class="team-section-3 section-padding bg-white">
         <div class="container wow img-custom-anim-top">
             <h2 class="wow img-custom-anim-left title-lg ds-2 fw-bold text-black">
-                Central Committee
+                <?php echo $term->name; ?>
             </h2>
             <div class="row mb-lg-0 mb-4 pb-lg-3">
+               
+               <?php
+                foreach( $terms as $term ):
+                    var_dump($term);
+                ?>
                 <div class="col-lg-3 pt-2 col-6 mb-3">
                     <div class="card-hover card-about text-center border bg-white img-styled" href="#">
                         <img src="https://fnpa.org.np/wp-content/uploads/2022/07/36-Krishna-Prasad-Parajuli.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Arlene McCoy</p>
+                        <p class="fw-bold text-black mt-3 mb-2"><?php echo $post->post_title; ?></p>
                         <p class="text-secondary">Co-Founder & CEO</p>
                         <p class="text-secondary">Contact: 9851077264</p>
                         <p class="text-secondary">idealss190@gmail.com</p>
                     </div>
                 </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="https://fnpa.org.np/wp-content/uploads/2018/12/30.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Dianne Russell</p>
-                        <p class="text-secondary">Product Manager</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="https://fnpa.org.np/wp-content/uploads/2018/12/2-3.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Ronald Richards</p>
-                        <p class="text-secondary">Developer</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="https://fnpa.org.np/wp-content/uploads/2018/12/puskal.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Albert Flores</p>
-                        <p class="text-secondary">Co-Founder</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/page-about/section-5/avartar-1.png" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Arlene McCoy</p>
-                        <p class="text-secondary">Co-Founder & CEO</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="https://fnpa.org.np/wp-content/uploads/2018/12/11.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Dianne Russell</p>
-                        <p class="text-secondary">Product Manager</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="https://fnpa.org.np/wp-content/uploads/2018/12/22.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Ronald Richards</p>
-                        <p class="text-secondary">Developer</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 pt-2 col-6 mb-3">
-                    <div class="card-hover card-about text-center border bg-white img-styled" href="#">
-                        <img src="https://fnpa.org.np/wp-content/uploads/2022/07/kamal-p-pokhrel.jpg" alt="abon" />
-                        <p class="fw-bold text-black mt-3 mb-2">Albert Flores</p>
-                        <p class="text-secondary">Co-Founder</p>
-                        <p class="text-secondary">Contact: 9851077264</p>
-                        <p class="text-secondary">idealss190@gmail.com</p>
-                    </div>
-                </div>
+            <?php endforeach; ?>
+
             </div>
         </div>
     </section>
+<?php endif; ?>
     <!-- Team section-3 end -->
 
 </main>
