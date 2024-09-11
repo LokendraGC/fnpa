@@ -114,53 +114,19 @@
                     <!-- Web Menu -->
                     <div class="offcanvas-body pt-0 align-items-center justify-content-between">
                         <div class="tcmenu__navbar-wrap tcmenu__main-menu d-none d-md-none d-lg-flex">
-                            <ul class="navbar-nav gap-4 me-auto align-items-lg-center navigation">
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link fw-medium" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item dropdown menu-item-has-children">
-                                    <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="about.html">Background</a></li>
-                                        <li><a class="dropdown-item" href="about.html">Objectives</a></li>
-                                        <li><a class="dropdown-item" href="message.html">Message of the president</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Central Committee 2024-2026</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Central Committee 2078</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Secretariat 2022</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Central Comittee 2075</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Advisory Member</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Past President</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown menu-item-has-children">
-                                    <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resource</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="blog.html">News</a></li>
-                                        <li><a class="dropdown-item" href="events.html">Events & Activities</a></li>
-                                        <li><a class="dropdown-item" href="notice.html">Notice</a></li>
-                                        <li><a class="dropdown-item" href="downloads.html">Download</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown menu-item-has-children">
-                                    <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Members</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="committee.html">Founder Members</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Honorary Members</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Commodity Members</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Institutional Members</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">Associate Members</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">General Members</a></li>
-                                        <li><a class="dropdown-item" href="committee.html">District Co-Ordination Members</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link fw-medium" href="gallery.html">Gallery</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link fw-medium" href="contact.html">Contact</a>
-                                </li>
-                            </ul>
+
+                            <?php
+                            $menu_args = array(
+                                'theme_location'  => 'menu-1',  
+                                'menu_class'      => 'navbar-nav gap-4 me-auto align-items-lg-center navigation',  
+                                'container'       => false,
+                                     'depth'           => 2,  //1 means no dropdown
+                                     'walker'          => new FNPA_Walker_Nav_Menu(),
+                                 );
+
+                            wp_nav_menu($menu_args);
+                            ?>
+
                         </div>                    
                         <div class="mt-3 mt-lg-0 d-flex align-items-center">
                             <a href="javascript:void(0)" class="ps-3 pe-2 border-end"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
@@ -308,9 +274,9 @@
                     $first_email = get_field('wtn_email_address_first','options');
                     $sec_email = get_field('wtn_email_address_second','options');
                     if($first_email || $sec_email ):
-                       ?>
-                       <hr class="mb-5">
-                       <div class="contact-list mb-5">
+                     ?>
+                     <hr class="mb-5">
+                     <div class="contact-list mb-5">
                         <h4>Email Address</h4>
                         <p><?php echo $first_email; ?></p>
                         <p><?php echo $sec_email; ?></p>
@@ -346,39 +312,17 @@
 <!-- Mobile Menu -->
 <div class="tcmenu__navbar-wrap tcmenu__main-menu d-block d-md-block d-lg-none">
     <div class="container">
-        <ul class="mobile-men">
-            <li class="nav-item">
-                <a class="nav-link fw-medium" href="index.html">Home</a>
-            </li>
-            <li class="nav-item dropdown menu-item-has-children">
-                <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="about.html">Background</a></li>
-                    <li><a class="dropdown-item" href="about.html">Objectives</a></li>
-                    <li><a class="dropdown-item" href="message.html">Message of the president</a></li>
-                    <li><a class="dropdown-item" href="committee.html">Central Committee 2024-2026</a></li>
-                    <li><a class="dropdown-item" href="committee.html">Central Committee 2078</a></li>
-                    <li><a class="dropdown-item" href="committee.html">Secretariat 2022</a></li>
-                    <li><a class="dropdown-item" href="committee.html">Central Comittee 2075</a></li>
-                    <li><a class="dropdown-item" href="committee.html">Advisory Member</a></li>
-                    <li><a class="dropdown-item" href="committee.html">Past President</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown menu-item-has-children">
-                <a class="nav-link fw-medium" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resource</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="blog.html">News</a></li>
-                    <li><a class="dropdown-item" href="events.html">Events & Activities</a></li>
-                    <li><a class="dropdown-item" href="notice.html">Notice</a></li>
-                    <li><a class="dropdown-item" href="downloads.html">Download</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link fw-medium" href="gallery.html">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link fw-medium" href="contact.html">Contact</a>
-            </li>
-        </ul>  
+        <?php
+                            $menu_args = array(
+                                'theme_location'  => 'menu-1',  
+                                'menu_class'      => 'mobile-men',  
+                                'container'       => false,
+                                     'depth'           => 2,  //1 means no dropdown
+                                     'walker'          => new FNPA_Walker_Nav_Menu(),
+                                 );
+
+                            wp_nav_menu($menu_args);
+                            
+                            ?> 
     </div>
 </div>

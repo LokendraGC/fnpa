@@ -1,4 +1,5 @@
 <?php 
+
 class FNPA_Walker_Nav_Menu extends Walker {
 	/**
 	 * What the class handles.
@@ -46,7 +47,7 @@ class FNPA_Walker_Nav_Menu extends Walker {
 		$indent = str_repeat( $t, $depth );
 
 		// Default class.
-		$classes = array( 'sub-menu' );
+		$classes = array( 'dropdown-menu' );  //class for ul(dropdown)
 
 		/**
 		 * Filters the CSS class(es) applied to a menu list element.
@@ -136,6 +137,18 @@ class FNPA_Walker_Nav_Menu extends Walker {
 		$classes   = empty( $menu_item->classes ) ? array() : (array) $menu_item->classes;
 		$classes[] = 'menu-item-' . $menu_item->ID;
 
+		// classes for li which has no dropdown
+		$classes = array();
+		$classes[] = 'nav-item';
+
+		if( $this->has_children ){   
+
+		$classes[] = 'nav-item dropdown menu-item-has-children';  // classes for li which has dropdown
+
+		}
+
+
+
 		/**
 		 * Filters the arguments for a single nav menu item.
 		 *
@@ -217,6 +230,22 @@ class FNPA_Walker_Nav_Menu extends Walker {
 		}
 
 		$atts['aria-current'] = $menu_item->current ? 'page' : '';
+
+		$atts['class'] = 'nav-link fw-medium';   //ul>li><a class=""/>
+
+		if( $depth > 0 ){
+
+		$atts['class'] = 'dropdown-item';   //ul>li>ul>li><a class="dropdown-item"/> if it has children
+
+		}
+
+		if( $this->has_children ){
+
+			$atts['class'] = 'nav-link fw-medium';   //ul>li><a class=""/>	if it has children
+			$atts['href'] = '#';   
+			$atts['data-bs-toggle'] = 'dropdown';   
+			$atts['aria-expanded'] = 'false';   
+		}
 
 		/**
 		 * Filters the HTML attributes applied to a menu item's anchor element.
